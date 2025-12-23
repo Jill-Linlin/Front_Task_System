@@ -1,11 +1,11 @@
 import { createContext, useContext, useState } from "react";
-import { removeAuthToken } from "../utils/auth";
+import { getAuthToken, removeAuthToken, setAuthToken } from "../utils/auth";
 
 const AuthContext = createContext(null); //建立空白資料庫
 
 //建立AuthProvider組件，直接使用children
 export const AuthProvider = ({ children }) => {
-  const [isAuthenticated, setIsAuthenticated] = useState(!!getAuthToken());
+  const [isAuthenticated, setIsAuthenticated] = useState(!!getAuthToken()); //修正從localstorage讀取,不要呼叫getAuthtoken
 
   //login 時要將token存進去，並將狀態改為true
   const login = (token) => {

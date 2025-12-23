@@ -34,11 +34,19 @@ const Login = () => {
 
   return (
     <div
-      style={{ display: "flex", justifyContent: "center", marginTop: "100px" }}
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        height: "100vh",
+      }}
     >
       <form
         onSubmit={handleSubmit}
-        style={{ border: "1px soild #ccc", padding: "20px" }}
+        style={{
+          border: "1px soild #ccc",
+          padding: "20px",
+        }}
       >
         <h2>系統登入</h2>
         <div>
