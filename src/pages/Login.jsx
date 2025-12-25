@@ -18,8 +18,8 @@ const Login = () => {
       //await 代表在這邊等一下
       //等axiosClient post回傳結果
       const response = await axiosClient.post("/users/login", {
-        username,
-        password,
+        account: username,
+        password: password,
       });
 
       //response會有token
@@ -38,13 +38,14 @@ const Login = () => {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        height: "100vh",
+        minheight: "100vh",
+        width: "100vw",
       }}
     >
       <form
         onSubmit={handleSubmit}
         style={{
-          border: "1px soild #ccc",
+          border: "1px solid #ccc",
           padding: "20px",
         }}
       >
@@ -68,6 +69,26 @@ const Login = () => {
         </div>
         <br />
         <button type="submit">進入系統</button>
+
+        <hr style={{ margin: "20px 0", border: "0.5px solid #eee" }} />
+
+        <div style={{ textAlign: "center" }}>
+          <span>還沒有帳號嗎？</span>
+          <button
+            type="button"
+            onClick={() => navigate("/register")} // 點擊後切換網址到 /register
+            style={{
+              marginLeft: "10px",
+              backgroundColor: "transparent",
+              color: "#007bff",
+              border: "none",
+              cursor: "pointer",
+              textDecoration: "underline",
+            }}
+          >
+            立即註冊
+          </button>
+        </div>
       </form>
     </div>
   );

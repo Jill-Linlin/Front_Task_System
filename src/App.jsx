@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AuthProvider } from "./context/AuthContext";
 import Login from "./pages/Login";
 import ProtectedRoute from "./components/ProtectedRoute";
+import Register from "./pages/Register";
 
 function App() {
   return (
@@ -15,6 +16,8 @@ function App() {
           {/*第三層:像Java 的switch-case,決定網址是哪一個頁面*/}
 
           <Route path="/login" element={<Login />} />
+
+          <Route path="/register" element={<Register />} />
 
           <Route
             path="/"
