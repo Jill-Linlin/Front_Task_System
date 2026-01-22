@@ -2,10 +2,11 @@ import { Navigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 
 const ProtectedRoute = ({ children }) => {
-  const { isAuthticated } = useAuth(); //引用AuthContext的useAuth.isAuthticated
+  // 直接從本機存取，最保險
+  const token = localStorage.getItem("token");
 
-  if (!isAuthticated) {
-    return <Navigate to="/login" replace />; //如果isAuthticated為false則留在login頁面
+  if (!token || token === "undefined") {
+    return <Navigate to="/login" replace />;
   }
 
   return children; //為true則回傳App.jsx中的children區塊

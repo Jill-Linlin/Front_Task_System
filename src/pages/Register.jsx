@@ -33,58 +33,77 @@ const Register = () => {
   return (
     <div
       style={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        minheight: "100vh",
-        width: "100vw",
+        display: "flex", // 啟用 Flex 佈局
+        justifyContent: "center", // 水平居中
+        alignItems: "center", // 垂直居中
+        minHeight: "100vh", // 關鍵：高度至少要等於 100% 視窗高度
+        width: "100vw", // 寬度撐滿視窗
+        backgroundColor: "#1a1a1a", // 配合你截圖的深色背景
       }}
     >
       <form
         onSubmit={handleSubmit}
         style={{
           border: "1px solid #ccc",
-          padding: "20px",
+          padding: "40px", // 增加內邊距讓框框大一點
+          borderRadius: "8px", // 加一點圓角比較好看
+          backgroundColor: "#242424", // 表單背景稍微亮一點點
+          color: "white", // 文字變白色
+          width: "350px", // 固定一個寬度
         }}
       >
-        <h2>用戶註冊</h2>
-        <div>
-          <label>帳號: </label>
+        <h2 style={{ textAlign: "center", marginBottom: "20px" }}>用戶註冊</h2>
+
+        <div style={{ marginBottom: "15px" }}>
+          <label style={{ display: "block" }}>帳號: </label>
           <input
             type="text"
+            style={{ width: "100%", padding: "8px", marginTop: "5px" }}
             value={formData.account}
             onChange={(e) =>
               setFormData({ ...formData, account: e.target.value })
             }
-            required
           />
         </div>
-        <br />
-        <div>
-          <label>密碼: </label>
+
+        <div style={{ marginBottom: "15px" }}>
+          <label style={{ display: "block" }}>密碼: </label>
           <input
             type="password"
+            style={{ width: "100%", padding: "8px", marginTop: "5px" }}
             value={formData.password}
             onChange={(e) =>
               setFormData({ ...formData, password: e.target.value })
             }
-            required
           />
         </div>
-        <br />
-        <div>
-          <label>確認密碼: </label>
+
+        <div style={{ marginBottom: "20px" }}>
+          <label style={{ display: "block" }}>確認密碼: </label>
           <input
             type="password"
+            style={{ width: "100%", padding: "8px", marginTop: "5px" }}
             value={formData.confirmPassword}
             onChange={(e) =>
               setFormData({ ...formData, confirmPassword: e.target.value })
             }
-            required
           />
         </div>
-        <hr style={{ margin: "20px 0", border: "0.5px solid #eee" }} />
-        <button type="submit">確認註冊</button>
+
+        <button
+          type="submit"
+          style={{
+            width: "100%",
+            padding: "10px",
+            cursor: "pointer",
+            backgroundColor: "#4a4a4a",
+            color: "white",
+            border: "none",
+            borderRadius: "4px",
+          }}
+        >
+          確認註冊
+        </button>
       </form>
     </div>
   );

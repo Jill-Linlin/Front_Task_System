@@ -4,7 +4,7 @@ import { useAuth } from "../context/AuthContext";
 import axiosClient from "../api/axiosClient";
 
 const Login = () => {
-  const [username, setUsername] = useState("");
+  const [account, setAccount] = useState("");
   const [password, setPassword] = useState("");
 
   const navigate = useNavigate(); //跳轉網址
@@ -18,17 +18,22 @@ const Login = () => {
       //await 代表在這邊等一下
       //等axiosClient post回傳結果
       const response = await axiosClient.post("/users/login", {
-        account: username,
+        account: account,
         password: password,
       });
 
       //response會有token
-      const token = response.data.token;
+      const token = response.data.accessToken;
+      const userName = response.data.name || account;
       login(token);
 
-      navigate("/");
+      localStorage.setItem("token", token);
+      localStorage.setItem("userName", userName);
+
+      navigate("/tasks");
     } catch (error) {
-      alert("帳號或密碼錯誤!");
+      const errorMsg = error.response?.data?.message || "帳號或密碼錯誤!";
+      alert(errorMsg);
     }
   };
 
@@ -54,8 +59,8 @@ const Login = () => {
           <label>帳號: </label>
           <input
             type="text"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
+            value={account}
+            onChange={(e) => setAccount(e.target.value)}
           />
         </div>
         <br />
